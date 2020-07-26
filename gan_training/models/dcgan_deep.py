@@ -45,6 +45,7 @@ class Generator(nn.Module):
         self.conv_out = nn.Sequential(nn.Conv2d(ngf, nc, 3, 1, 1), nn.Tanh())
 
     def forward(self, input, y):
+        print('##Y##', y)
         y = y.clamp(None, self.nlabels - 1)
         out = self.get_latent(input, y)
 
