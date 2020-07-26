@@ -130,7 +130,7 @@ class Discriminator(nn.Module):
         print('##Y##', y.shape)
         result = self.fc_out(out, y)
         assert (len(result.shape) == 1)
-        print(result)
+        print("result",result)
         return result
 
 
