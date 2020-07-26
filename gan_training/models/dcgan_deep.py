@@ -47,7 +47,7 @@ class Generator(nn.Module):
     def forward(self, input, y):
         # print('##Y##', y)
         y = y.clamp(None, self.nlabels - 1)
-        print('##Y##', y)
+        # print('##Y##', y)
         out = self.get_latent(input, y)
 
         out = self.fc(out)
@@ -124,6 +124,8 @@ class Discriminator(nn.Module):
             return out.view(out.size(0), out.size(1), -1).sum(dim=2)
             
         out = out.view(out.size(0), -1)
+        print('##Y##', y)
+        print('##Y##', y.shape)
         y = y.clamp(None, self.nlabels - 1)
         result = self.fc_out(out, y)
         assert (len(result.shape) == 1)
